@@ -347,6 +347,24 @@ static NSMutableArray<FlutterResult>* getRidResults;
     }
     [JPUSHService removeNotification:identifier];
 }
+- (void)cancelNotification:(FlutterMethodCall*)call result:(FlutterResult)result {
+    JPLog(@"cancelNotification:");
+    
+    NSNumber *notificationId = call.arguments;
+    if (!notificationId) {
+        return ;
+    }
+    JPushNotificationIdentifier *identifier = [[JPushNotificationIdentifier alloc] init];
+    identifier.identifiers = @[notificationId.stringValue];
+    
+    if (@available(iOS 10.0, *)) {
+        //iOS 10 以上有效，等于 YES 则在通知中心显示的里面移除，等于 NO 则为在待推送的里面移除；iOS 10 以下无效
+        identifier.delivered = NO;
+    } else {
+        // Fallback on earlier versions
+    }
+    [JPUSHService removeNotification:identifier];
+}
 
 - (void)getLaunchAppNotification:(FlutterMethodCall*)call result:(FlutterResult)result {
     JPLog(@"getLaunchAppNotification");

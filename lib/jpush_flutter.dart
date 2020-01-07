@@ -245,6 +245,15 @@ class JPush {
   }
 
   ///
+  /// 移除待推送的某个通知
+  /// @param notificationId 通知 id，即：LocalNotification id
+  ///
+  void cancelNotification({@required int notificationId}) {
+    print(flutter_log + "cancelNotification:");
+    _channel.invokeListMethod("cancelNotification",notificationId);
+  }
+
+  ///
   /// iOS Only
   /// 点击推送启动应用的时候原生会将该 notification 缓存起来，该方法用于获取缓存 notification
   /// 注意：notification 可能是 remoteNotification 和 localNotification，两种推送字段不一样。
