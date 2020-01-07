@@ -262,6 +262,14 @@ public class JPushPlugin implements MethodCallHandler {
             JPushInterface.clearNotificationById(registrar.context(),(int)id);
         }
     }
+    // same as clearNotification.
+    public void cancelNotification(MethodCall call, Result result) {
+        Log.d(TAG,"clearNotification: ");
+        Object id = call.arguments;
+        if (id != null) {
+            JPushInterface.clearNotificationById(registrar.context(),(int)id);
+        }
+    }
 
     public void getLaunchAppNotification(MethodCall call, Result result) {
         Log.d(TAG,"");
