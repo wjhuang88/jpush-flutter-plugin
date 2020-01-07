@@ -100,6 +100,8 @@ public class JPushPlugin implements MethodCallHandler {
             clearAllNotifications(call, result);
         } else if (call.method.equals("clearNotification")) {
             clearNotification(call,result);
+        } else if (call.method.equals("cancelNotification")) {
+            cancelNotification(call, result);
         } else if (call.method.equals("getLaunchAppNotification")) {
             getLaunchAppNotification(call, result);
         } else if (call.method.equals("getRegistrationID")) {

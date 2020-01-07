@@ -146,6 +146,8 @@ static NSMutableArray<FlutterResult>* getRidResults;
         [self clearAllNotifications:call result:result];
     } else if ([@"clearNotification" isEqualToString:call.method]) {
         [self clearNotification:call result:result];
+    } else if ([@"cancelNotification" isEqualToString:call.method]) {
+        [self cancelNotification:call result:result];
     } else if([@"getLaunchAppNotification" isEqualToString:call.method]) {
         [self getLaunchAppNotification:call result:result];
     } else if([@"getRegistrationID" isEqualToString:call.method]) {
